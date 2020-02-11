@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  php-apache:
+    image: php:apache
+    ports:
+      - "8090:80"
+    networks:
+      - "laravel"
+    volumes:
+      - /home/vinjos/DOCKER/lara-tan/source/:/var/www/html/
+
+  mariadb:
+    image: mariadb
+    ports:
+      - "8091:3306"
+    networks:
+      - "laravel"
+    environment:
+      MYSQL_ROOT_PASSWORD: asd
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: asd
+    volumes:
+      - db:/var/lib/mysql
+
+networks:
+  laravel:
+
+volumes:
+  db:
